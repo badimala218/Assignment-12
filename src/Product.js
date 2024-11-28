@@ -29,9 +29,9 @@ export class Product extends Component
 {
     static defaultProps = 
     {
-        products: [
-            {"category":"School Supplies", "price":"$35", "name":"Globe"},
-        ]
+        products: {
+            '0': {"id": 0, "category":"School Supplies", "price":"$35", "name":"Globe"},
+        }
     }
 
     state = 
@@ -43,16 +43,50 @@ export class Product extends Component
     constructor(props)
     {
         super(props);
+        this.handleFilter = this.handleFilter.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+        this.handleDestroy = this.handleDestroy.bind(this);
+    }
+
+    handleFilter(filterInput)
+    {
+        this.setState(filterInput);
+    }
+
+    handleSave(product)
+    {
+        if (!product.id)
+        {
+            product.id = new Date().getTime();
+        }
+
+        this.setState((prevState) => {
+            let products = prevState.products;
+            products[product.id] = product;
+            return { products }
+        });
+    }
+
+    handleDestroy(productId)
+    {
+        this.setState((prevState) => {
+            let products = prevState.products;
+            delete products[productId];
+            return { products }
+        });
     }
 
     render() 
     {
         return (
-            <main>
+            <main class="m-1">
                 <h1>My Inventory</h1>
-                <Filters />
-                <ProductTable products={productList} filterText={this.state.filterText}/>
-                <ProductForm />
+                <Filters onFilter={this.handleFilter}/>
+                <ProductTable products={productList} 
+                    filterText={this.state.filterText}
+                    onDestroy={this.handleDestroy}/>
+                <ProductForm onSave={this.handleSave} 
+                    />
             </main>
         )
     }

@@ -1,27 +1,51 @@
-import React from "react";
+import React, { Component } from "react";
 import { ProductRow } from "./ProductRow";
 
-export const ProductTable = (props) => {
-    const prods = Object.keys(props.products).map(key => props.products[key]);
-    return (
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th></th>
-            </tr>
-            {prods.map(
-                (product, i) => {
-                    if (product.name.indexOf(props.filterText) != -1) {
-                    return <ProductRow
-                        key={i}
+export class ProductTable extends Component  
+{  
+    constructor(props)
+    {
+        super(props);
+        this.handleDestroy = this.handleDestroy.bind(this);
+    }
+
+    handleDestroy(id)
+    {
+        this.props.onDestroy(id);
+    }
+
+    render() {
+        const prods = Object.keys(this.props.products).map(key => this.props.products[key]);
+        const rows = [];
+        prods.forEach(
+            (product) => {
+                if (product.name.indexOf(this.props.filterText) != -1) {
+                    rows.push(<ProductRow
+                        key={product.id}
+                        id={product.id}
                         name={product.name}
                         category={product.category}
                         price={product.price}
-                        />
-                    }
+                        onDestroy={this.handleDestroy}
+                        />);
                 }
-            )}
-        </table>
-    )
+            }
+        );
+
+        return (
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        )
+    }
 }
