@@ -38,28 +38,28 @@ export class ProductForm extends Component
     render() {
         return (
             <form>
-                <div class="form-group w-50">
+                <div className="form-group w-50">
                     <h2>Add a new product</h2>
-                    <label for="name">Name</label>
+                    <label htmlFor="name">Name</label>
                     <input type="text" name="name" id="name" 
                         onChange={this.handleChange}
                         value={this.state.product.name}
-                        class="form-control"/>
+                        className="form-control"/>
                     <br/>
-                    <label for="category">Category</label>
+                    <label htmlFor="category">Category</label>
                     <input type="text" name="category" id="category"
                         onChange={this.handleChange}
                         value={this.state.product.category}
-                        class="form-control"/>
+                        className="form-control"/>
                     <br/>
-                    <label for="price">Price</label>
+                    <label htmlFor="price">Price</label>
                     <input type="text" name="price" id="price"
                         onChange={this.handleChange}
                         value={this.state.product.price}
-                        class="form-control"/>
+                        className="form-control"/>
                     <br/>
                     <input type="button" value="Save" 
-                        class="btn btn-info text-light"
+                        className="btn btn-info text-light"
                         onClick={this.handleSave}/>
                 </div>
             </form>

@@ -22,7 +22,7 @@ export class ProductRow extends Component
                 <td>{this.props.category}</td>
                 <td>{this.props.price}</td>
                 <td><input type="button" value="Delete" 
-                    class="btn btn-info text-light bg-info"
+                    className="btn btn-info text-light bg-info"
                     onClick={this.destroy}/></td>
             </tr>
         )

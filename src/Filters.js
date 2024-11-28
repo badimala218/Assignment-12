@@ -21,10 +21,10 @@ export class Filters extends Component
 
     render() {
         return (
-            <form class="my-3">
+            <form className="my-3">
                 <input type="text" placeholder="Search..." 
                     name="filterText" onChange={this.handleChange}
-                    class="form-control"/>
+                    className="form-control"/>
             </form>
         )   
     }   

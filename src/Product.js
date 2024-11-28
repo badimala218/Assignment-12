@@ -4,16 +4,6 @@ import { Filters } from './Filters';
 import { ProductTable } from './ProductTable';
 import { ProductForm } from './ProductForm';
 
-// let productList = [
-//     {"category":"Books", "price": "$19.99", "name": "Tarot Cards"},
-//     {"category":"Music", "price": "$5,000", "name": "Accordion"},
-//     {"category":"Produce", "price": "$5", "name": "Watermelon Chunks"},
-//     {"category":"Furniture", "price": "$799", "name": "Chaise Lounge"},
-//     {"category":"Office Supplies", "price": "$230", "name": "Plastic Organizer"},
-//     {"category":"Seasonal", "price": "$10", "name": "Zombie Lawn Flamingos"},
-//     {"category":"Pharmacy", "price":"$23.50", "name":"Multivitamins"},
-// ];
-
 let productList = {
     '1': {id: 1, category: 'Books', price: '$19.99', name: 'Tarot Cards'},
     '2': {id: 2, category: 'Music', price: '$5,000', name: 'Accordion'},
@@ -79,7 +69,7 @@ export class Product extends Component
     render() 
     {
         return (
-            <main class="m-1">
+            <main className="m-1">
                 <h1>My Inventory</h1>
                 <Filters onFilter={this.handleFilter}/>
                 <ProductTable products={productList} 
