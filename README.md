@@ -1,6 +1,16 @@
-# Getting Started with Create React App
+# Assignment 12
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). (Depreciated)
+
+### CS 648 coursework
+React inventory management system website.
+
+#### Notes
+- CDNs were used for Bootstrap.
+- Depreciated: Added babel dependencies to combat depreciation warnings, but it's also depreciated.
+
+#### File information
+React components are located in src folder.
 
 ## Available Scripts
 
